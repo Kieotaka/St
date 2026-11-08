@@ -10,7 +10,6 @@ using json = nlohmann::json;
 
 TEST(Converter, CsvToJson)
 {
-    FAIL() << "Специально сломанный тест для проверки fail-fast";
     const auto result = json::parse(convert_text("name,age\nEva,36\nLinus,55\n", "csv", "json"));
     ASSERT_EQ(result.size(), 2u);
     EXPECT_EQ(result[0]["name"], "Eva");
@@ -72,19 +71,16 @@ TEST(Converter, SameFormatRejected)
 
 TEST(Converter, NestedObjectCannotExportToCsv)
 {
-    assert(false);
     EXPECT_THROW(convert_text(R"([{"name":"Eva","meta":{"id":1}}])", "json", "csv"), std::runtime_error);
 }
 
 TEST(Converter, MalformedJsonRejected)
 {
-    assert(false);
     EXPECT_THROW(convert_text("[", "json", "yaml"), std::exception);
 }
 
 TEST(Converter, EmptyCsvProducesEmptyArray)
 {
-    assert(false);
     const auto result = json::parse(convert_text("", "csv", "json"));
     EXPECT_TRUE(result.is_array());
     EXPECT_TRUE(result.empty());
