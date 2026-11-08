@@ -71,16 +71,19 @@ TEST(Converter, SameFormatRejected)
 
 TEST(Converter, NestedObjectCannotExportToCsv)
 {
+    assert(false);
     EXPECT_THROW(convert_text(R"([{"name":"Eva","meta":{"id":1}}])", "json", "csv"), std::runtime_error);
 }
 
 TEST(Converter, MalformedJsonRejected)
 {
+    assert(false);
     EXPECT_THROW(convert_text("[", "json", "yaml"), std::exception);
 }
 
 TEST(Converter, EmptyCsvProducesEmptyArray)
 {
+    assert(false);
     const auto result = json::parse(convert_text("", "csv", "json"));
     EXPECT_TRUE(result.is_array());
     EXPECT_TRUE(result.empty());
