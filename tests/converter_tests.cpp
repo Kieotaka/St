@@ -10,6 +10,7 @@ using json = nlohmann::json;
 
 TEST(Converter, CsvToJson)
 {
+    FAIL() << "Специально сломанный тест для проверки fail-fast";
     const auto result = json::parse(convert_text("name,age\nEva,36\nLinus,55\n", "csv", "json"));
     ASSERT_EQ(result.size(), 2u);
     EXPECT_EQ(result[0]["name"], "Eva");
